@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Show Event</title>
 </head>
 <body>
+    <% @user = User.find(@event.creator_id) %>
+    <h2>Event Name:</h2>
+    <%= @event.eventname %>
+
+    <h3>Event Description:</h3>
+    <%= @event.eventdesc %>
+    <h3>Event Date:</h3>
+    <%= @event.eventdate %>
+    <h3>Event Creator:</h3>
+    <%= @user.email %>
+
+
+
+
+
 
 </body>
 </html>

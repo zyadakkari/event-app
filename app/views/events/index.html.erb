@@ -8,6 +8,14 @@
 </head>
 <body>
     <h1>Welcome to your events page</h1>
-
+    <% @events.each do |event| %>
+      <div>
+          <h3><%= event.eventname %></h3>
+          <p><%= event.eventdate %></p>
+        <% @user = User.find(event.creator_id) %>
+          <p><%= @user.email %>
+        <%= link_to "See details", event_path(event.id) %>
+      </div>
+    <% end %>
 </body>
 </html>

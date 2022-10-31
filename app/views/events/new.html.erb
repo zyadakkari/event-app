@@ -9,6 +9,10 @@
 <body>
     <% if user_signed_in? %>
         <%= form_with model: @event do |form| %>
+            <%= form.label :eventname, "Event Name" %>
+            <%= form.text_field :eventname %>
+            <%= form.label :eventdesc, "Event Description" %>
+            <%= form.text_area :eventdesc %>
             <%= form.label :eventdate, "Event Date" %>
             <%= form.text_field :eventdate %>
             <%= form.submit "Submit" %>

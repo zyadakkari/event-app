@@ -1,20 +1,20 @@
 class EventsController < ApplicationController
 
   def index
+    @events = Event.order(eventdate: :desc)
+
   end
 
-  # def show
-  #     @event = Event.find(params[:id])
-  #     # @creator = @event.creator
-  # end
+  def show
+      @event = Event.find(params[:id])
+  end
 
   def new
     @event = Event.new()
   end
 
   def create
-    @user  = User.find(params[:user_signed_in])
-    @event = @user.created_events.create(params[:event])
+    @event = current_user.created_events.build(event_params)
 
     if @event.save
       redirect_to :events, allow_other_host: true
@@ -27,7 +27,8 @@ class EventsController < ApplicationController
 
   private
 
-#   def event_params
-#     params.require(:event).permit(:eventdate)
-#   end
+  def event_params
+    params.require(:event).permit(:eventdate, :eventname, :eventdesc)
+  end
+
 end
