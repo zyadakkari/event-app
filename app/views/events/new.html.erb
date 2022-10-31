@@ -8,13 +8,9 @@
 </head>
 <body>
     <% if user_signed_in? %>
-    <% @user = current_user.id %>
         <%= form_with model: @event do |form| %>
             <%= form.label :eventdate, "Event Date" %>
             <%= form.text_field :eventdate %>
-            <%= form.label :user_id, "User" %>
-            <%= form.text_field :user_id, value: current_user.id %>
-
             <%= form.submit "Submit" %>
         <% end %>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete %>

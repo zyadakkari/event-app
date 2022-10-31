@@ -9,7 +9,11 @@ class EventsController < ApplicationController
   # end
 
   def new
-    @user = User.find(params[:user_id])
+    @event = Event.new()
+  end
+
+  def create
+    @user  = User.find(params[:user_signed_in])
     @event = @user.created_events.create(params[:event])
 
     if @event.save
