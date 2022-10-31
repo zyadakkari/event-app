@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <% if user_signed_in? %>
+    <% @user = current_user.id %>
+        <%= form_with model: @event do |form| %>
+            <%= form.label :eventdate, "Event Date" %>
+            <%= form.text_field :eventdate %>
+            <%= form.label :user_id, "User" %>
+            <%= form.text_field :user_id, value: current_user.id %>
+
+            <%= form.submit "Submit" %>
+        <% end %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+        <a href="/users/sign_in">Sign in</a>
+    <% end %>
+</body>
+</html>
