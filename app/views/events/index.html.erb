@@ -14,8 +14,14 @@
           <p><%= event.eventdate %></p>
         <% @user = User.find(event.creator_id) %>
           <p><%= @user.email %>
+              <br>
         <%= link_to "See details", event_path(event.id) %>
       </div>
+    <% end %>
+    <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+        <%= link_to "Sign in", user_session_path%>
     <% end %>
 </body>
 </html>
