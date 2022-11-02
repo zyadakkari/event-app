@@ -18,6 +18,13 @@
     <h3>Event Creator:</h3>
     <%= @user.email %>
     <br><br>
+    <% if user_signed_in? %>
+        <h3>RSVP to this event:</h3>
+        <%= link_to 'RSVP', rsvp_event_path %>
+    <% else %>
+        <p>Sign in to RSVP to this event</p>
+        <a href="/users/sign_in">Sign in</a>
+   <% end %>
 
     <%= link_to "Back to Events page", root_path %>
 

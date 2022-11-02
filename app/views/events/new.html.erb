@@ -11,12 +11,17 @@
         <%= form_with model: @event do |form| %>
             <%= form.label :eventname, "Event Name" %>
             <%= form.text_field :eventname %>
+            <br>
             <%= form.label :eventdesc, "Event Description" %>
             <%= form.text_area :eventdesc %>
+            <br>
             <%= form.label :eventdate, "Event Date" %>
             <%= form.text_field :eventdate %>
+            <br>
+            <br>
             <%= form.submit "Submit" %>
         <% end %>
+        <br>
         <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
     <% else %>
         <a href="/users/sign_in">Sign in</a>

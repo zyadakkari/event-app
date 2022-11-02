@@ -7,13 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-  Created Events:
+  <h2>Created Events:</h2>
   <% @events.each do |event| %>
       <div>
-          <h1>Event Id: <%= event.id %></h1>
+          <h3>Event Id: <%= event.id %></h3>
           <h3>Event Date: <%= event.eventdate %></h3>
       </div>
 <% end %>
+<br>
+  <h2>Upcoming Events:</h2>
+  <% current_user.attended_events.each do |event| %>
+  <% if event.eventdate > Date.today %>
+      <div>
+          <h3>Event Id: <%= event.id %></h3>
+          <h3>Event Date: <%= event.eventdate %></h3>
+      </div>
+  <br>
+  <% else %>
+   <h2>Past Events:</h2>
+      <div>
+          <h3>Event Id: <%= event.id %></h3>
+          <h3>Event Date: <%= event.eventdate %></h3>
+      </div>
+  <% end %>
+  <% end %>
     <h2>Create Event:</h2>
     <%= link_to 'New Event', new_event_path %>
 </body>
