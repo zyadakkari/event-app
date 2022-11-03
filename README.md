@@ -1,5 +1,7 @@
 TOP RAILS: Events App **WIP**
 
+link to app: https://rocky-crag-32697.herokuapp.com/users/sign_in
+
 https://www.theodinproject.com/lessons/ruby-on-rails-private-events
 
 Project: Private Events
