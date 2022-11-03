@@ -1,0 +1,10 @@
+<% @events.each do |event| %>
+<div class="event">
+    <div class="event-item-heading"><%= event.eventname %></div>
+    <div class="event-item-date"><%= event.eventdate %></div>
+    <% @user = User.find(event.creator_id) %>
+    <div class="event-item-creator"><%= @user.email %></div>
+    <%= link_to "See details", event_path(event.id) %>
+
+</div>
+<% end %>

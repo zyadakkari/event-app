@@ -23,7 +23,24 @@ class EventsController < ApplicationController
     end
   end
 
-    def rsvp
+  def edit
+    @event = Event.find(params[:id])
+
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to @event
+      flash[:notice] = 'Event updated successfully'
+    else
+      render 'edit'
+    end
+
+  end
+
+
+  def rsvp
       @event = Event.find(params[:id])
       if @event.attendees.include?(current_user)
         redirect_to @event, notice: "You are already on the list"
@@ -31,7 +48,13 @@ class EventsController < ApplicationController
         @event.attendees << current_user
         redirect_to @event, notice: "You have successfully rsvp-ed"
       end
-    end
+  end
+
+  def cancel_rsvp
+    @event = Event.find(params[:id])
+    @event.attendees.delete(current_user)
+    redirect_to @event, notice: "You are no longer attending this event"
+  end
 
 
 

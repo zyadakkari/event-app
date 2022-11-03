@@ -1,0 +1,29 @@
+<div class="header">
+    <div class="top-half">
+        <div class="search">
+            <button>
+                <%= image_tag "magnify.png" %>
+            </button>
+            <form action="#" id="form" role="search">
+                <input type="search" id="query" name="q">
+            </form>
+        </div>
+        <div class="profile-icons">
+            <%= image_tag "bell-ring-outline.png" %>
+            <%# <%= image_tag "profile-pic.png" %> %>
+            <div class="user-name"><%= current_user.name %></div>
+        </div>
+    </div>
+    <div class="bottom-half">
+        <img src="./img/profile-pic.png" alt="large-profile-pic" id="large-profile-pic">
+        <div class="user-welcome">
+            <span class="welcome">Hi there,</span>
+            <span class="large-user-name"><%= current_user.name %></span>
+        </div>
+        <div class="action-buttons">
+            <button class="new"><%= link_to "New", new_event_path %> </button>
+            <button class="upload">Upload</button>
+            <button class="share">Share</button>
+        </div>
+    </div>
+</div>

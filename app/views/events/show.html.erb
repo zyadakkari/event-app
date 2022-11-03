@@ -7,26 +7,34 @@
     <title>Show Event</title>
 </head>
 <body>
-    <% @user = User.find(@event.creator_id) %>
-    <h2>Event Name:</h2>
-    <%= @event.eventname %>
-
-    <h3>Event Description:</h3>
-    <%= @event.eventdesc %>
-    <h3>Event Date:</h3>
-    <%= @event.eventdate %>
-    <h3>Event Creator:</h3>
-    <%= @user.email %>
-    <br><br>
-    <% if user_signed_in? %>
-        <h3>RSVP to this event:</h3>
-        <%= link_to 'RSVP', rsvp_event_path %>
-    <% else %>
-        <p>Sign in to RSVP to this event</p>
-        <a href="/users/sign_in">Sign in</a>
-   <% end %>
-
-    <%= link_to "Back to Events page", root_path %>
+    <div class="container">
+        <%= render 'navbar' %>
+        <%= render 'topnav' %>
+        <div class="event-main-section">
+            <% @user = User.find(@event.creator_id) %>
+            <h2>Event Name:</h2>
+            <%= @event.eventname %>
+            <h3>Event Description:</h3>
+            <%= @event.eventdesc %>
+            <h3>Event Date:</h3>
+            <%= @event.eventdate %>
+            <h3>Event Creator:</h3>
+            <%= @user.email %>
+            <br><br>
+            <% if current_user.id != @user.id %>
+              <% if @event.attendees.include?(current_user) %>
+                <h3>Cancel RSVP:</h3
+                    <%= link_to "Cancel", cancel_rsvp_event_path %>
+              <% else %>
+                <h3>RSVP to this event:</h3>
+                <%= link_to 'RSVP', rsvp_event_path %>
+              <% end %>
+            <% else %>
+                <%= link_to 'Edit Event', edit_event_path(@event.id) %>
+            <% end %>
+            <%= link_to "Back to Events page", root_path %>
+        </div>
+    </div>
 
 
 

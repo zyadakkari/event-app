@@ -7,8 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-  <h2>Created Events:</h2>
-  <% @events.each do |event| %>
+    <div class="container">
+      <%= render 'events/navbar' %>
+      <%= render 'events/topnav' %>
+
+      <h2>Created Events:</h2>
+      <% @events.each do |event| %>
       <div>
           <h3>Event Id: <%= event.id %></h3>
           <h3>Event Date: <%= event.eventdate %></h3>
@@ -33,5 +37,6 @@
   <% end %>
     <h2>Create Event:</h2>
     <%= link_to 'New Event', new_event_path %>
+</div>
 </body>
 </html>

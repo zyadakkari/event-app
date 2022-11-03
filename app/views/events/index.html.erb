@@ -1,27 +1,94 @@
+
+
+    <% if user_signed_in? %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <% else %>
+        <%= link_to "Sign in", user_session_path%>
+    <% end %>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Events</title>
+    <link rel="stylesheet" href="./style.css">
+    <title>Event Dashboard</title>
 </head>
 <body>
-    <h1>Welcome to your events page</h1>
-    <% @events.each do |event| %>
-      <div>
-          <h3><%= event.eventname %></h3>
-          <p><%= event.eventdate %></p>
-        <% @user = User.find(event.creator_id) %>
-          <p><%= @user.email %>
-              <br>
-        <%= link_to "See details", event_path(event.id) %>
-      </div>
-    <% end %>
-    <% if user_signed_in? %>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    <% else %>
-        <%= link_to "Sign in", user_session_path%>
-    <% end %>
+    <div class="container">
+        <%= render 'navbar' %>
+        <%= render 'topnav' %>
+        <div class="main-section">
+            <div class="eventlist">
+                <div class="events-heading">All Events</div>
+                <%= render 'eventtemplate' %>
+            </div>
+            <div class="sidebar">
+                <div class="announcements">
+                    <div class="announcements-heading">Announcements</div>
+                    <div class="announcements-content">
+                        <div class="announcement">
+                            <div class="announcement-title">Site Maintenance</div>
+                            <div class="announcement-text">Vestibulum condimentim tellus lacus, in accumsan elit maximus ac. Donec henderit sondales congue...</div>
+                        </div>
+                        <div class="announcement">
+                            <div class="announcement-title">Community Share Day</div>
+                            <div class="announcement-text">Nam vei lectus tincidunt, rutrum nulla eu, ornare libero. Aliquam dictum accumsan portitor...</div>
+                        </div>
+                        <div class="announcement">
+                            <div class="announcement-title">Updated Privacy Policy</div>
+                            <div class="announcement-text">Phaseilus efficuture nisi eget elit consecture, eget condimentum ante acutor. Cras firgiili sagitis sem in mattis...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="trending">
+                    <div class="trending-heading">Trending</div>
+                    <div class="trending-content">
+                        <div class="trend">
+                            <div class="trend-image">
+                                <img src="./img/trend1.png" alt="trend1" id="trend1">
+                            </div>
+                            <div class="trend-text">
+                                <span class="user-handle">@tegan</span>
+                                <span class="account-name">World Peace Builder</span>
+                            </div>
+                        </div>
+                        <div class="trend">
+                            <div class="trend-image">
+                                <img src="./img/trend2.png" alt="trend2" id="trend2">
+                            </div>
+                            <div class="trend-text">
+                                <span class="user-handle">@morgan</span>
+                                <span class="account-name">Super Cool Project</span>
+                            </div>
+                        </div>
+                        <div class="trend">
+                            <div class="trend-image">
+                                <img src="./img/trend3.png" alt="trend3" id="trend3">
+                            </div>
+                            <div class="trend-text">
+                                <span class="user-handle">@kendall</span>
+                                <span class="account-name">Life Changing App</span>
+                            </div>
+                        </div>
+                        <div class="trend">
+                            <div class="trend-image">
+                                <img src="./img/trend4.png" alt="trend4" id="trend4">
+                            </div>
+                            <div class="trend-text">
+                                <span class="user-handle">@alex</span>
+                                <span class="account-name">No Traffic Maker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 </body>
 </html>

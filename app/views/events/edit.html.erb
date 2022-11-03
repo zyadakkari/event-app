@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <%= form_with model: @event do |form| %>
+        <%= form.label :eventname, "Event Name" %>
+        <%= form.text_field :eventname %>
+        <br>
+        <%= form.label :eventdesc, "Event Description" %>
+        <%= form.text_area :eventdesc %>
+        <br>
+        <%= form.label :eventdate, "Event Date" %>
+        <%= form.text_field :eventdate %>
+        <br>
+        <br>
+        <%= form.submit "Update" %>
+    <% end %>
+    <br>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+
+</body>
+</html>
