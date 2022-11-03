@@ -1,11 +1,11 @@
 @font-face {
     font-family: "robotoReg";
-    src: url('./roboto/roboto-regular.ttf');
+    src: url('Roboto-Regular.ttf');
 }
 
 @font-face {
     font-family: "robotoLight";
-    src: url('./roboto/roboto-light.ttf');
+    src: url('Roboto-Light.ttf');
 }
 
 .container {
