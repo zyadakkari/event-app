@@ -1,0 +1,46 @@
+<div class="row py-5">
+    <div class="col-lg-4 mx-auto">
+        <section class="d-flex justify-content-center mt-5 mb-5">
+            <span class="text-capitalize text-white bg-dark px-2 py-1 rounded">
+                Edit <%= resource_name.to_s.humanize %> Details
+            </span>
+        </section>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="field mt-5">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control py-2" %>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="field mt-3">
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "New password ", class: "form-control py-2" %>
+
+          </div>
+
+          <div class="field mt-3">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm new password", class: "form-control py-2" %>
+          </div>
+
+          <div class="field mt-3">
+            <%= f.password_field :current_password, autocomplete: "current-password", placeholder: "Current password", class: "form-control py-2" %>
+          </div>
+
+          <div class="actions mt-4 mb-5">
+            <%= f.submit "Update", class: "form-control py-2 btn btn-primary fw-bold shadow" %>
+          </div>
+          <%= link_to "Back", root_path, class: "form-control py-2 btn btn-secondary fw-bold shadow" %>
+        <% end %>
+
+
+        <h3 class="mt-3">Cancel my account</h3>
+
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "form-control py-2 btn btn-danger fw-bold shadow" %></p>
+
+
+    </div>
+</div>

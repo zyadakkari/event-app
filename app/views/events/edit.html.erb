@@ -4,24 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Edit Event</title>
 </head>
 <body>
-    <%= form_with model: @event do |form| %>
-        <%= form.label :eventname, "Event Name" %>
-        <%= form.text_field :eventname %>
-        <br>
-        <%= form.label :eventdesc, "Event Description" %>
-        <%= form.text_area :eventdesc %>
-        <br>
-        <%= form.label :eventdate, "Event Date" %>
-        <%= form.text_field :eventdate %>
-        <br>
-        <br>
-        <%= form.submit "Update" %>
-    <% end %>
-    <br>
-    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+    <%= render 'topnav' %>
+    <div class="row py-5">
+        <div class="col-lg-4 mx-auto">
+            <section class="d-flex justify-content-center mt-5 mb-5">
+                <span class="text-capitalize text-white bg-dark px-2 py-1 rounded">
+                    Edit Event Details
+                </span>
+            </section>
+
+            <%= form_with model: @event do |form| %>
+                <div class="field mt-3">
+                    <%= form.label :eventname, "Event Name" %>
+                    <%= form.text_field :eventname, class: "form-control py-2"%>
+                </div>
+                <div class="field mt-3">
+                    <%= form.label :eventdesc, "Event Description" %>
+                    <%= form.text_area :eventdesc, class: "form-control py-2" %>
+                </div>
+                <div class="field mt-3">
+                    <%= form.label :eventdate, "Event Date" %>
+                    <%= form.date_select :eventdate, class: "form-control py-2" %>
+                </div>
+                <div class="actions mt-4 mb-5">
+                    <%= form.submit "Update", class: "form-control py-2 btn btn-success fw-bold shadow" %>
+                </div>
+                <%= link_to "Cancel", user_path(current_user.id), class: "form-control py-2 btn btn-danger fw-bold shadow" %>
+            <% end %>
+
+        </div>
+    </div>
 
 </body>
 </html>

@@ -1,0 +1,33 @@
+<div class="row py-5">
+    <div class="col-lg-4 mx-auto">
+        <section class="d-flex justify-content-center my-5">
+            <span class="text-capitalize text-white bg-dark px-2 py-1 rounded">
+                <%= resource_name %> Login
+            </span>
+        </section>
+
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="field mt-5">
+            <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "form-control py-2" %>
+          </div>
+
+          <div class="field mt-3">
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control py-2" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="field d-flex align-items-center justify-content-center mt-3">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me, class: "ms-2"%>
+            </div>
+          <% end %>
+
+          <div class="actions mt-3 mb-5">
+            <%= f.submit "Log in", class: "btn btn-primary form-control py-2 fw-bold shadow"%>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+    </div>
+</div>
